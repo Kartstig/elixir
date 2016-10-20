@@ -40,6 +40,7 @@ defmodule IEx.Helpers do
     * `pid/3`          - creates a PID with the 3 integer arguments passed
     * `port/1`         - creates a port from a string
     * `port/2`         - creates a port with the 2 non-negative integers passed
+    * `q/0`            - quits the current interactive elixir session
     * `ref/1`          - creates a reference from a string
     * `ref/4`          - creates a reference with the 4 integer arguments passed
     * `pwd/0`          - prints the current working directory
@@ -1289,6 +1290,22 @@ defmodule IEx.Helpers do
         Integer.to_charlist(x) ++
         '.' ++ Integer.to_charlist(y) ++ '.' ++ Integer.to_charlist(z) ++ '>'
     )
+  end
+
+  @doc """
+  Quits the current interactive elixir session.
+
+  ## Examples
+
+      iex> q()
+      ok
+      iex>
+      $
+
+  """
+  def q() do
+    :init.stop
+    :ok
   end
 
   @doc """
