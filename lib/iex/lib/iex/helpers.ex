@@ -38,6 +38,7 @@ defmodule IEx.Helpers do
     * `open/1`         - opens the source for the given module or function in your editor
     * `pid/1`          - creates a PID from a string
     * `pid/3`          - creates a PID with the 3 integer arguments passed
+    * `q/0`           - quits the current interactive elixir session
     * `ref/1`          - creates a Reference from a string
     * `ref/4`          - creates a Reference with the 4 integer arguments passed
     * `pwd/0`          - prints the current working directory
@@ -1230,6 +1231,22 @@ defmodule IEx.Helpers do
         Integer.to_charlist(x) ++
         '.' ++ Integer.to_charlist(y) ++ '.' ++ Integer.to_charlist(z) ++ '>'
     )
+  end
+
+  @doc """
+  Quits the current interactive elixir session.
+
+  ## Examples
+
+      iex> q()
+      ok
+      iex>
+      $
+
+  """
+  def q() do
+    :init.stop
+    :ok
   end
 
   @doc """
